@@ -6,7 +6,7 @@
 /*   By: chajax42 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:45:53 by chajax42          #+#    #+#             */
-/*   Updated: 2022/08/12 21:22:01 by chajax42         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:29:46 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	Zombie::announce(void)
 	return ;
 }
 
-void	setName(std::string name)
+void	Zombie::setName(std::string name)
 {
 	this->_name = name;
 	return ;

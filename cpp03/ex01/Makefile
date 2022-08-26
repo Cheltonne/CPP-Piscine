@@ -1,4 +1,5 @@
-FILES			=	Fixed \
+FILES			=	ClapTrap \
+					ScavTrap \
 					main \
 
 SRCS			=	$(addsuffix .cpp, $(FILES))
@@ -10,7 +11,7 @@ RM				=	rm -f
 CFLAGS			=	-Wall -Wextra -Werror
 FLAGS			=	-std=c++98
 
-NAME			=	Fixed_3.0
+NAME			=	ClapTrap
 
 all:			$(NAME)
 

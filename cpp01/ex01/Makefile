@@ -1,6 +1,5 @@
 FILES			=	Zombie \
-					newZombie \
-					randomChump \
+					zombieHorde \
 					main \
 
 SRCS			=	$(addsuffix .cpp, $(FILES))
@@ -12,7 +11,7 @@ RM				=	rm -f
 CFLAGS			=	-Wall -Wextra -Werror
 FLAGS			=	-std=c++98
 
-NAME			=	zombie_summoning
+NAME			=	zombie_horde_summoning
 
 all:			$(NAME)
 
