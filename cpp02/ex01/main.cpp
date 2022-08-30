@@ -6,7 +6,7 @@
 /*   By: chajax42 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:35:19 by chajax42          #+#    #+#             */
-/*   Updated: 2022/08/24 17:35:22 by chajax42         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:41:56 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@ std::cout << "a is "  << a.toInt() <<  " as integer" << std::endl;
 std::cout << "b is "  << b.toInt() <<  " as integer" << std::endl;
 std::cout << "c is "  << c.toInt() <<  " as integer" << std::endl;
 std::cout << "d is "  << d.toInt() <<  " as integer" << std::endl;
+{
+	float nb = 42;
+	Fixed a(nb);
+	std::cout << a.toFloat() << std::endl;
+}
 return 0;
 }
