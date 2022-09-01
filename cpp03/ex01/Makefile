@@ -8,10 +8,10 @@ OBJS			=	$(SRCS:.cpp=.o)
 
 CC				=	c++
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror 
 FLAGS			=	-std=c++98
 
-NAME			=	ClapTrap
+NAME			=	ScavTrap
 
 all:			$(NAME)
 

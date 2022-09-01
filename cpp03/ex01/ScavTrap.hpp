@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:22:44 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/26 18:35:32 by chajax           ###   ########.fr       */
+/*   Updated: 2022/08/27 15:36:05 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 
 class ScavTrap: public ClapTrap
 {
-	private:
-		std::string	_name;
-		int			_hp;
-		int			_mana;
-		int			_dmg;
 	public:
 		ScavTrap(void);
 		ScavTrap(std::string name);

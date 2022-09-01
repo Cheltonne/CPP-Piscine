@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:31:50 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/26 18:29:39 by chajax           ###   ########.fr       */
+/*   Updated: 2022/08/27 15:25:05 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main()
 		ScavTrap	paul("Paul Sauvage");
 		ScavTrap	frak("Franckycow09");
 
-		std::cout << "Franckycow09Dow has " << frak.ScavTrap::getHp() << " HP left!\n";
+		std::cout << "Franckycow09Dow has " << frak.getHp() << " HP left!\n";
 		paul.attack("Franckycow09");
 		frak.takeDamage(9999);
 		std::cout << "Franckycow09Dow has " << frak.getHp() << " HP left!\n";
