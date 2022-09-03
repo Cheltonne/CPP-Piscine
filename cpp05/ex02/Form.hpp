@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:52:35 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 17:47:21 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 00:01:26 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,24 @@ class Bureaucrat;
 
 class Form
 {
-	private:
+	protected:
 		bool				_is_signed;
 		const std::string 	_name;
 		const int			_sign_rank;
 		const int			_exec_rank;
-	public:
 		Form(void);
-		Form(std::string name, int sign_rank, int exec_rank);
-		~Form(void);
 		Form(Form &copy);
-		Form &operator=(const Form &rhs);
+	public:
+		Form(std::string name, int sign_rank, int exec_rank);
+		virtual ~Form(void) = 0;
+		virtual Form &operator=(const Form &rhs);
 		const std::string		getName(void) const;
-		int						getSignGrade(void) const;
-		int						getExecGrade(void) const;
-		const bool				getStatus(void) const;
-		void					setStatus(bool status);
-		void					beSigned(Bureaucrat &b);
+		virtual int				getSignGrade(void) const;
+		virtual int				getExecGrade(void) const;
+		virtual const bool		getStatus(void) const;
+		virtual void			setStatus(bool status);
+		virtual void			beSigned(Bureaucrat &b);
+		virtual void			execute(Bureaucrat const &executor) const;
 		class GradeTooHighException: public std::exception
 		{
 			public :

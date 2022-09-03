@@ -6,12 +6,16 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 17:51:31 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 00:00:09 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 Bureaucrat::Bureaucrat(void): _grade(150)
 {
@@ -105,7 +109,32 @@ void	Bureaucrat::signForm(Form &f)
 	catch (Form::GradeTooLowException e)
 	{
 		std::cout << this->getName() << " couldn't sign " << f.getName() <<\
-		"because: " << e.what();
+		" because: " << e.what();
+		return ;
 	}
-	std::cout << this->getName() << " signed " << f.getName();
+	std::cout << this->getName() << " signed " << f.getName() << '\n';
+}
+
+void	Bureaucrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch (PresidentialPardonForm::ExecException e)
+	{
+		std::cout << e.what();
+		return ;
+	}
+	catch (RobotomyRequestForm::ExecException e)
+	{
+		std::cout << e.what();
+		return ;
+	}
+	catch (ShruberryCreationForm::ExecException e)
+	{
+		std::cout << e.what();
+		return ;
+	}
+	std::cout << this->getName() << " executed " << form.getName();
 }

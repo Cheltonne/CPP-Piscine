@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 18:21:00 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/03 23:05:06 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ const std::string	Form::getName(void) const
 
 int	Form::getSignGrade(void) const
 {
-	return (this->_exec_rank);
+	return (this->_sign_rank);
 }
 
 int	Form::getExecGrade(void) const
@@ -95,4 +95,10 @@ void	Form::beSigned(Bureaucrat &b)
 		this->setStatus(true);
 	else
 		throw (Form::GradeTooLowException());
+	return ;
+}
+
+void	Form::execute(Bureaucrat const &executor) const
+{
+	return ;
 }
