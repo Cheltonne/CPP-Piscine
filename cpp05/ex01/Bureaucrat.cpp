@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/31 16:19:03 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/03 10:32:37 by chajax42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,20 @@ void	Bureaucrat::demote(void)
 {
 	this->setGrade(this->getGrade() + 1);
 	return ;
+}
+
+void	Bureaucrat::signForm(Form &Form)
+{
+	if (Form.getStatus() == true)
+	{
+		std::cout << Form.getName() << " is already signed.\n";
+		return ;
+	}
+	if (Form.getSignGrade() > this->getGrade())
+	{
+		Form.setStatus(true);
+		std::cout << this->getName() << " signed " << Form.getName() << '\n';
+	}
+	else
+		std::cout << this->getName() << "couldn't sign " << Form.getName() << " because their rank is too low.\n";
 }

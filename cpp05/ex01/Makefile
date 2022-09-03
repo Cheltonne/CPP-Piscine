@@ -1,5 +1,6 @@
-FILES			=	main \
-					Bureaucrat \
+FILES			=	Bureaucrat \
+					Form \
+					main \
 
 SRCS			=	$(addsuffix .cpp, $(FILES))
 
@@ -10,7 +11,7 @@ RM				=	rm -f
 CFLAGS			=	-Wall -Wextra -Werror 
 FLAGS			=	-std=c++98
 
-NAME			=	French_administration
+NAME			=	French_administration2.0
 all:			$(NAME)
 
 $(NAME):		$(OBJS)

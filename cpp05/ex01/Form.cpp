@@ -6,70 +6,67 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/01 18:51:51 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/03 15:53:13 by chajax42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Form.hpp"
 
-Form::Form(void): _grade(150)
+Form::Form(void): _name("Default form"), _sign_rank(0), _exec_rank(0)
 {
-	std::cout << "✒️Form default constructor called.✒️\n";
 	return ;
 }
 
-Form::Form(const std::string &name): _name(name), _grade(150)
-{
-	std::cout << "✒️Form " << this->getName() << " created.✒️\n\
-	Rank: " << this->getGrade() << '\n';
-	return ;
-}
-
-Form::Form(const std::string &name, int sign_rank, int exec_rank): _name(name), _sign_rank(sign_rank), _exec_rank(exec_rank)
+Form::Form(std::string name, int sign_rank, int exec_rank): _name(name), _is_signed(false), _sign_rank(sign_rank), _exec_rank(exec_rank)
 {
 	try
 	{
-		this->setGrade(rank);
+		if (sign_rank < 1 || exec_rank < 1)
+			throw (Form::GradeTooHighException());
+		else if (sign_rank > 150 || exec_rank > 150)
+			throw (Form::GradeTooLowException());
 	}
-	catch (GradeTooHighException e)
+	catch (Form::GradeTooLowException e)
 	{
-			std::cout << "Rank too high, cannot proceed.\n";
+		std::cout << "Couldn't create the form because: " << e.what();
 	}
-	std::cout << "✒️Form " << this->getName() << " created.✒️\n\
-	Rank:" << this->getGrade() << '\n';
+	catch (Form::GradeTooHighException e)
+	{
+		std::cout << "Couldn't create the form because: " << e.what();
+	}
+	std::cout << "✒️ Form " << this->getName() << " created.✒️\nSign rank: " << this->getSignGrade() << '\n' << "Exec rank: "\
+	<< this->getExecGrade() << '\n';
 	return ;
 }
 
 Form::~Form(void)
 {
-	std::cout << "✒️Form destructor called.✒️\n";
+	std::cout << "✒️ Form destructor called.✒️\n";
 	return ;
 }
 
-Form::Form(Form &copy)
+Form::Form(Form &copy): _name(copy.getName()), _is_signed(copy.getStatus()), _sign_rank(copy.getSignGrade()), _exec_rank(copy.getExecGrade())
 {
-	std::cout << "✒️Form copy constructor called.✒️\n";
+	std::cout << "✒️ Form copy constructor called.✒️\n";
 	*this = copy;
 }
 
 Form	&Form::operator=(Form const &rhs)
 {
 	std::cout << "✒️Copy asignment operator called.✒️\n";
-	this->_grade = rhs.getGrade();
 	return (*this);
 }
 
 std::ostream    &operator<<(std::ostream &o, Form const &rhs)
 {
-	o << rhs.getName() << ", bureaucrat rank " << rhs.getGrade() << ".\n";
+	o << rhs.getName() << "form.\nSign rank: " << rhs.getSignGrade()
+	<< "\nExec rank: " << rhs.getExecGrade() << "\nSign status: ";
+	if (rhs.getStatus() == true)
+		o << "yes\n";
+	else
+		o << "no\n";
 	return (o);
-}
-
-void	Form::setName(std::string name)
-{
-	this->_name = name;
-	return ;
 }
 
 const std::string	Form::getName(void) const
@@ -79,23 +76,33 @@ const std::string	Form::getName(void) const
 
 int	Form::getSignGrade(void) const
 {
-	return (this->_grade);
+	return (this->_exec_rank);
 }
 
-void	Form::setSignGrade(int rank)
+int	Form::getExecGrade(void) const
 {
-	if (rank < 1)
-		throw (Form::GradeTooHighException());
-	else if (rank > 150)
-		throw (Form::GradeTooLowException());
-	this->_grade = rank;
+	return (this->_exec_rank);
+}
+
+const bool	Form::getStatus(void) const
+{
+	return (this->_is_signed);
+}
+
+void	Form::setStatus(bool status)
+{
+	this->_is_signed = status;
 	return ;
 }
 
-void	Form::beSigned(Bureaucrat &b)
+void	Form::beSigned(Bureaucrat b)
 {
 	try
 	{
-		
+		b.signForm(*this);
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what();
 	}
 }

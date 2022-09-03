@@ -6,13 +6,16 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:52:35 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/31 16:22:13 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/03 15:16:19 by chajax42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -31,7 +34,7 @@ class Bureaucrat
 		void					setGrade(int rank);
 		void					promote(void);
 		void					demote(void);
-
+		void					signForm(Form &Form);
 		class GradeTooHighException: public std::exception
 		{
 			public :

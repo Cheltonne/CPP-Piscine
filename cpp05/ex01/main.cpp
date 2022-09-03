@@ -6,20 +6,23 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:47:05 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/31 16:25:27 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/03 15:51:36 by chajax42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
 {
 	Bureaucrat	yoasobi("Lilas Ikura", 2);
+	Form		f("Tony of the Golden Order", 2, 6);
 
+	std::cout << f;
 	try
 	{
-		std::cout << "Trying to set the rank to 0...\n";
+		std::cout << "Trying to set the Bureaucrat rank to 0...\n";
 		yoasobi.setGrade(0);
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
