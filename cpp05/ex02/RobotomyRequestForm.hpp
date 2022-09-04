@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:52:35 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 23:36:21 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:01:06 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,7 @@ class RobotomyRequestForm: public Form
 	public:
 		RobotomyRequestForm(std::string target);
 		~RobotomyRequestForm(void);
-		void	robotomize(void) const;
-		void	execute(Bureaucrat const &executor) const;
-		class	ExecException: public std::exception
-		{
-				public:
-					virtual const char *what() const throw()
-					{
-						return ("Couldn't execute the form. Exec rank is too low.\n");
-					}
-		};
+		void	action(void) const;
 };
 	int        randomize(int min, int max);
 #endif

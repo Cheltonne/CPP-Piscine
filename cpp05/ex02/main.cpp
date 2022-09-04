@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:47:05 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/04 00:22:24 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:04:27 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,13 @@ int	main()
 		ShruberryCreationForm		t("toilettes");
 		try
 		{
+			yoasobi.executeForm(f);
 			yoasobi.signForm(f);
 			yoasobi.signForm(f);
-			v.signForm(t);
 			yoasobi.signForm(t);
-			f.execute(yoasobi);
-			t.execute(v);
-		}
-		catch (ShruberryCreationForm::ExecException e)
-		{
-			std::cout << e.what();
+			v.signForm(t);
+			yoasobi.executeForm(f);
+			v.executeForm(t);
 		}
 		catch (Form::GradeTooLowException e)
 		{
@@ -53,11 +50,7 @@ int	main()
 		{
 			yoasobi.signForm(f);
 			yoasobi.signForm(f);
-			f.execute(yoasobi);
-		}
-		catch (RobotomyRequestForm::ExecException e)
-		{
-			std::cout << e.what();
+			yoasobi.executeForm(f);
 		}
 		catch (Form::GradeTooLowException e)
 		{
@@ -69,7 +62,6 @@ int	main()
 		PresidentialPardonForm	f("User");
 		yoasobi.signForm(f);
 		yoasobi.signForm(f);
-		f.execute(yoasobi);
-		v.executeForm(f);
+		yoasobi.executeForm(f);
 	}
 }

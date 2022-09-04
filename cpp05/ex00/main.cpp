@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:47:05 by chajax            #+#    #+#             */
-/*   Updated: 2022/08/31 16:25:27 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 00:47:24 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main()
 {
-	Bureaucrat	yoasobi("Lilas Ikura", 2);
+	Bureaucrat	yoasobi("Lilas Ikuta", 2);
 
 	try
 	{
@@ -28,7 +28,7 @@ int	main()
 	}
 	try
 	{
-		std::cout << "Trying to set the rank to 0...\n";
+		std::cout << "Trying to set the rank to 151...\n";
 		yoasobi.setGrade(151);
 	}
 	catch (Bureaucrat::GradeTooLowException)
@@ -40,6 +40,7 @@ int	main()
 	try
 	{
 		yoasobi.demote();
+		std::cout << yoasobi;
 		yoasobi.setGrade(1);
 		std::cout << yoasobi;
 		yoasobi.promote();

@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:52:35 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/04 00:01:26 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:10:32 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ class Bureaucrat;
 
 class Form
 {
-	protected:
+	private:
 		bool				_is_signed;
 		const std::string 	_name;
 		const int			_sign_rank;
 		const int			_exec_rank;
+		virtual	void		action(void) const;
+	public:
 		Form(void);
 		Form(Form &copy);
-	public:
 		Form(std::string name, int sign_rank, int exec_rank);
 		virtual ~Form(void) = 0;
 		virtual Form &operator=(const Form &rhs);
@@ -36,13 +37,13 @@ class Form
 		virtual const bool		getStatus(void) const;
 		virtual void			setStatus(bool status);
 		virtual void			beSigned(Bureaucrat &b);
-		virtual void			execute(Bureaucrat const &executor) const;
+		void					execute(Bureaucrat const &executor) const;
 		class GradeTooHighException: public std::exception
 		{
 			public :
 				virtual const char *what() const throw()
 				{
-					return ("grade is too high\n");
+					return ("grade is too high.\n");
 				}
 		};
 		class GradeTooLowException: public std::exception
@@ -50,7 +51,15 @@ class Form
 			public :
 				virtual const char *what() const throw()
 				{
-					return ("grade is too low\n");
+					return ("grade is too low.\n");
+				}
+		};
+		class FormIsNotSigned: public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("the form isn't signed.\n");
 				}
 		};
 };

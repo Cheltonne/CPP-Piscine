@@ -74,7 +74,7 @@ Form *Intern::makeForm(const std::string form, const std::string target)
 		if (Names[i] == form)
 		{
 			ret = fct[i](target);
-			std::cout << "Intern creates " << Names[i] << '\n';
+			std::cout << "Intern creates " << Names[i] << " form.\n";
 		}
 	}
 	if (!ret)

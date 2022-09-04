@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 23:50:05 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:00:32 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,15 @@ PresidentialPardonForm::PresidentialPardonForm(void): Form()
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): _target(target), Form("ShrubForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target): _target(target), Form("Presidential Pardon Form", 25, 5)
 {
-	std::cout << "SCF constructor called on " << target << '\n'; 
+	std::cout << "PPF constructor called on " << target << '\n'; 
 	return ;
 }
 
-void	PresidentialPardonForm::pardon(void) const
+void	PresidentialPardonForm::action(void) const
 {
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblerox.\n";
-}
-
-void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
-{
-	if (executor.getGrade() < this->_exec_rank && this->getStatus() == true)
-		pardon();
-	else
-		throw (PresidentialPardonForm::ExecException());
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(void)

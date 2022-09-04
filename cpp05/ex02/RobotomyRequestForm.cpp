@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 23:41:22 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:01:16 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ RobotomyRequestForm::RobotomyRequestForm(void): Form()
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): _target(target), Form("ShrubForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): _target(target), Form("Robotomy Request Form", 72, 45)
 {
-	std::cout << "SCF constructor called on " << target << '\n'; 
+	std::cout << "RRF constructor called on " << target << '\n'; 
 	return ;
 }
 
-void RobotomyRequestForm::robotomize(void) const
+void RobotomyRequestForm::action(void) const
 {
 	if (randomize(0, 1))
 		std::cout << "*DRILL!* " << this->_target << " has been successfully robotomized" << '\n';
@@ -42,14 +42,6 @@ int	randomize(int min, int max)
         first = false;
     }
     return (min + rand() % ((max + 1) - min));
-}
-
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
-{
-	if (executor.getGrade() < this->_exec_rank && this->getStatus() == true)
-		robotomize();	
-	else
-		throw (RobotomyRequestForm::ExecException());
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(void)

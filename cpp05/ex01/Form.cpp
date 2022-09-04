@@ -65,7 +65,7 @@ const std::string	Form::getName(void) const
 
 int	Form::getSignGrade(void) const
 {
-	return (this->_exec_rank);
+	return (this->_sign_rank);
 }
 
 int	Form::getExecGrade(void) const

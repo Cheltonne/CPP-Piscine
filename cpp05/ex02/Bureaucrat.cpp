@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/04 00:00:09 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:08:55 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,11 @@ void	Bureaucrat::demote(void)
 
 void	Bureaucrat::signForm(Form &f)
 {
+	if (f.getStatus() == true)
+	{
+		std::cout << f.getName() << " is already signed.\n";
+		return ;
+	}
 	try
 	{
 		f.beSigned(*this);
@@ -112,7 +117,8 @@ void	Bureaucrat::signForm(Form &f)
 		" because: " << e.what();
 		return ;
 	}
-	std::cout << this->getName() << " signed " << f.getName() << '\n';
+	if (this->getGrade() <= f.getSignGrade())
+		std::cout << this->getName() << " signed " << f.getName() << '\n';
 }
 
 void	Bureaucrat::executeForm(Form const &form)
@@ -121,20 +127,17 @@ void	Bureaucrat::executeForm(Form const &form)
 	{
 		form.execute(*this);
 	}
-	catch (PresidentialPardonForm::ExecException e)
+	catch (Form::GradeTooLowException &e)
 	{
-		std::cout << e.what();
+		std::cout << this->getName() << " couldn't execute " << form.getName() <<\
+		" because: " << e.what();
 		return ;
 	}
-	catch (RobotomyRequestForm::ExecException e)
+	catch (Form::FormIsNotSigned &e)
 	{
-		std::cout << e.what();
+		std::cout << this->getName() << " couldn't execute " << form.getName() <<\
+		" because: " << e.what();
 		return ;
 	}
-	catch (ShruberryCreationForm::ExecException e)
-	{
-		std::cout << e.what();
-		return ;
-	}
-	std::cout << this->getName() << " executed " << form.getName();
+	std::cout << this->getName() << " (rank = " << this->getGrade() << ") executed " << form.getName() << " (Exec rank = " << form.getExecGrade() << ")\n";
 }

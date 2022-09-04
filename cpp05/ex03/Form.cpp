@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:54:55 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/03 23:05:06 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/04 11:04:43 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ void	Form::setStatus(bool status)
 
 void	Form::beSigned(Bureaucrat &b)
 {
-	if (this->getStatus() == true)
-	{
-		std::cout << this->getName() << " is already signed.\n";
-		return ;
-	}
 	if (b.getGrade() <= this->getSignGrade())
 		this->setStatus(true);
 	else
@@ -100,5 +95,17 @@ void	Form::beSigned(Bureaucrat &b)
 
 void	Form::execute(Bureaucrat const &executor) const
 {
+	if (executor.getGrade() <= this->getExecGrade() && this->getStatus() == true)
+		this->action();
+	else if (executor.getGrade() > this->getExecGrade())
+		throw (Form::GradeTooLowException());
+	else
+		throw (Form::FormIsNotSigned());
+	return ;
+}
+
+void	Form::action(void) const
+{
+	std::cout << "You called the wrong action function.\n";
 	return ;
 }

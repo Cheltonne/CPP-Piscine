@@ -52,6 +52,14 @@ class Bureaucrat
 					return ("grade is too low\n");
 				}
 		};
+		class IsSigned: public std::exception
+		{
+			public :
+				virtual const char *what() const throw()
+				{
+					return (" fornm is signed.\n");
+				}
+		};
 };
 	std::ostream	&operator<<(std::ostream &o, Bureaucrat const &rhs);
 #endif
