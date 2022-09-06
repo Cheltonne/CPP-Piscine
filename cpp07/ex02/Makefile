@@ -8,9 +8,9 @@ DEPTH			=	$(SRCS:.cpp=.d)
 
 CXX				=	c++
 RM				=	rm -f
-CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -g3
 
-NAME			=	Iter
+NAME			=	Array
 
 all:			$(NAME)
 
