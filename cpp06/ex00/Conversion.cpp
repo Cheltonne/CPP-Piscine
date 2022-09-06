@@ -6,11 +6,12 @@
 /*   By: chajax42 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 20:20:18 by chajax42          #+#    #+#             */
-/*   Updated: 2022/09/04 21:45:55 by chajax42         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:07:36 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Conversion.hpp"
+#include <iostream>
 
 Conversion::Conversion(char const *str)
 {
@@ -106,7 +107,6 @@ bool	Conversion::convertInt(char const *str)
 	long int	Int;
 	char		*endptr;
 
-	endptr = NULL;
 	Int = strtol(str, &endptr, 10);
 	if (!*endptr && Int >= INT_MIN && Int <= INT_MAX)
 	{
@@ -124,9 +124,8 @@ bool	Conversion::convertFloat(char const *str)
 	float	Float;
 	char	*endptr;
 
-	endptr = NULL;
 	Float = strtof(str, &endptr);
-	if (*endptr == 'f' && (*(endptr + 1)))
+	if (*endptr == 'f' && str[0] != 'f' && (*(endptr + 1)) == '\0')
 	{
 		this->_floatVal = Float;
 		this->_charVal = static_cast<char>(this->_floatVal);
@@ -142,14 +141,13 @@ bool	Conversion::convertDouble(char const *str)
 	double	Double;
 	char	*endptr;
 
-	endptr = NULL;
 	Double = strtod(str, &endptr);
 	if (!*endptr)
 	{
 		this->_doubleVal = Double;
 		this->_charVal = static_cast<char>(this->_doubleVal);
-		this->_intVal = static_cast<char>(this->_doubleVal);
-		this->_floatVal = static_cast<char>(this->_doubleVal);
+		this->_intVal = static_cast<int>(this->_doubleVal);
+		this->_floatVal = static_cast<double>(this->_doubleVal);
 		return (true);
 	}
 	return (false);
@@ -179,17 +177,17 @@ void	Conversion::display() const
 {
 	std::cout << BLUE_B << "Char   : " << RESET;
 	if (this->getCharDisp() == NOT_DISPLAYABLE)
-		std::cout << PINK_C << "Non displayable" << RESET << '\n';
+		std::cout << PINK_B << "Non displayable" << RESET << '\n';
 	else if (this->getCharDisp() == IMPOSSIBLE)
-		std::cout << RED_C << "Impossible" << RESET << '\n';
+		std::cout << RED_B << "Impossible" << RESET << '\n';
 	else
 		std::cout << YELLOW_B << "\'" << this->getCharVal() << "\'" << RESET << '\n';
 	std::cout << SKY_B << "Int    : " << RESET;
 	if (this->getIntDisp() == IMPOSSIBLE)
-		std::cout << RED_C << "Impossible" << RESET << '\n';
+		std::cout << RED_B << "Impossible" << RESET << '\n';
 	else
 		std::cout << YELLOW_B << this->getIntVal() << RESET << '\n';
+	std::cout << std::fixed << std::setprecision(1);
 	std::cout << GREEN_B << "Float  : " << RESET << YELLOW_B << this->getFloatVal() << "f" << RESET << '\n';
 	std::cout << PINK_B << "Double : " << RESET << YELLOW_B << this->getDoubleVal() << RESET << '\n';
-	std::cout << '\n' << '\n' << '\n';
 }

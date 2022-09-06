@@ -6,7 +6,7 @@
 /*   By: chajax42 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 20:24:54 by chajax42          #+#    #+#             */
-/*   Updated: 2022/09/04 20:25:59 by chajax42         ###   ########.fr       */
+/*   Updated: 2022/09/05 11:00:24 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "⛔⛔⛔\n";
-		std::cerr << RED_B << "Missing argument.\n" << RESET;
+		std::cerr << RED_B << "⛔ Wrong number of arguments, there should be one argument. ⛔\n" << RESET;
 		return (1);
 	}
 

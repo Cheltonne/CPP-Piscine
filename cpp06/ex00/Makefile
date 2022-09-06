@@ -4,21 +4,20 @@ FILES			=	Conversion \
 SRCS			=	$(addsuffix .cpp, $(FILES))
 
 OBJS			=	$(SRCS:.cpp=.o)
+DEPTH			=	$(SRCS:.cpp=.d)
 
-CC				=	c++
+CXX				=	c++
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror 
-FLAGS			=	-std=c++98
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD
 
 NAME			=	Converter
+
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				@clear
-				@echo "      The One Piece...the One Piece is real!!!!!"
-				@sleep 2
-				@clear
+$(NAME):		Makefile $(OBJS)
+				$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 				@echo "\033[0;32m"
+				@echo " The One Piece...the One Piece is real!!!!!"
 				@echo "      ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡛⢿⠟⣻⣿⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"
 				@echo "      ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⢂⡀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿"
 				@echo "      ⣿⣿⣿⣿⣿⣿⣭⣭⣭⡽⠄⡿⠁⠘⢲⣶⡿⣿⣿⡿⠭⣭⣟⣛⣛⣿⣿⣿⣿⣿"
@@ -35,10 +34,11 @@ $(NAME):		$(OBJS)
 				@echo "\033[0;31m⠀"
 				@echo "          CAN WE GET MUCH HIGHER    "
 				@echo "\033[0;37m"
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
+
+-include $(DEPTH)
 
 clean:
-				$(RM) $(OBJS) $(WRONG_OBJS)
+				$(RM) $(OBJS) $(DEPTH)
 
 fclean:			clean
 				$(RM) $(NAME) 

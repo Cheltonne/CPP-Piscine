@@ -6,27 +6,25 @@
 /*   By: chajax42 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 21:59:54 by chajax42          #+#    #+#             */
-/*   Updated: 2022/09/04 22:11:00 by chajax42         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:10:32 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BeReal.hpp"
 
-void	VeritableType() {
-
+void	BeReal()
+{
 	Base	*test = generate();
 	Base	&testRef = *test;
 
+	std::cout << '\n';
 	identify(test);
 	identify(testRef);
-
-	std::cout << '\n';
-	
 	delete test;
 }
 
 int	main()
 {
-	VeritableType();
+	BeReal();
 	return (0);
 }

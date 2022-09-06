@@ -1,4 +1,4 @@
-FILES			=	Serialization \
+FILES			=	Array \
 					main \
 
 SRCS			=	$(addsuffix .cpp, $(FILES))
@@ -10,7 +10,7 @@ CXX				=	c++
 RM				=	rm -f
 CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD
 
-NAME			=	Serialization
+NAME			=	Iter
 
 all:			$(NAME)
 

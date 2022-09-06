@@ -1,5 +1,4 @@
-FILES			=	Serialization \
-					main \
+FILES			=	main \
 
 SRCS			=	$(addsuffix .cpp, $(FILES))
 
@@ -10,7 +9,7 @@ CXX				=	c++
 RM				=	rm -f
 CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD
 
-NAME			=	Serialization
+NAME			=	templates
 
 all:			$(NAME)
 
@@ -46,3 +45,4 @@ fclean:			clean
 re:				fclean $(NAME)
 
 PHONY:			all clean fclean re test
+
