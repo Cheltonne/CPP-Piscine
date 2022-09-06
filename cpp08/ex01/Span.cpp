@@ -6,7 +6,7 @@
 /*   By: chajax <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:11:21 by chajax            #+#    #+#             */
-/*   Updated: 2022/09/06 18:14:48 by chajax           ###   ########.fr       */
+/*   Updated: 2022/09/06 19:27:24 by chajax           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	Span::addNumber(int nb)
 	return ;
 }
 
-void	Span::addNumber(std::vector<int> start, std::vector<int> end)
+void	Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	if ((_v.size() + static_cast<int>(end - start)) < _size + 1)
+	if ((_vtr.size() + static_cast<int>(end - start)) < this->_max + 1)
    	{
-		_v.insert(_v.end(), start, end);
-       	std::cout << "Current size: " << _v.size() << std::endl;
+		_vtr.insert(_vtr.end(), start, end);
+       	std::cout << "Current size: " << _vtr.size() << std::endl;
     }
     else
 		throw(std::length_error("The Span object is full. Cannot add any more numbers.\n"));
