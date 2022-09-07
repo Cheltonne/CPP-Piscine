@@ -4,13 +4,13 @@ SRCS			=	$(addsuffix .cpp, $(FILES))
 
 OBJS			=	$(SRCS:.cpp=.o)
 DEPTH			=	$(SRCS:.cpp=.d) \
-					easyfind.d
+					MutantStack.d
 
 CXX				=	c++
 RM				=	rm -f
-CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -g3
+CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD
 
-NAME			=	easyfind
+NAME			=	mutantstack
 
 all:			$(NAME)
 
@@ -30,7 +30,6 @@ $(NAME):		Makefile $(OBJS)
 				@echo "      ⠀⠀⠀⠀⢀⣸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⠃⠀⠘⣿⡄"
 				@echo "      ⡈⣱⣶⣶⣾⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣆⠀⠀⣿⡇"
 				@echo "      ⠀⣿⣿⣿⣿⣿⣿⠏⠀⢀⠀⠀⠀⠀⠈⠀⠈⠀⠀⠀⠀⠹⣿⣿⣿⣿⣆⠀⢹⡇"
-				@echo "      ⢸⣿⣿⣿⣿⣿⡏⠀⡀⠡⠈⠀    ⠌⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⡇⠈⣷"
 				@echo "\033[0;31m⠀"
 				@echo "          CAN WE GET MUCH HIGHER    "
 				@echo "\033[0;37m"
